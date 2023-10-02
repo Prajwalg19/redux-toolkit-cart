@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { BsBagDashFill } from "react-icons/bs";
 function NavBar() {
-    let { amount, total } = useSelector((store) => {
+    let { amount } = useSelector((store) => {
         return store.first;
     });
 

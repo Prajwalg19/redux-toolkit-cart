@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import firstSlice from "./features/firstSlice";
-import modalSlice from "./features/modalSlice";
+import firstReducer from "./features/firstSlice";
+import modalReducer from "./features/modalSlice";
 export const store = configureStore({
     reducer: {
-        first: firstSlice,
-        modal: modalSlice,
+        first: firstReducer,
+        modal: modalReducer,
     },
 });

@@ -1,6 +1,5 @@
 import CartItem from "./cartItem";
 import { useDispatch } from "react-redux";
-import { actions } from "../features/firstSlice";
 import Modal from "./modal";
 import { modalActions } from "../features/modalSlice";
 import { useSelector } from "react-redux";
