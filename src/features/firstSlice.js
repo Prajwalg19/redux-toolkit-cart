@@ -1,18 +1,31 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-let initialState = {
+import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
+
+// Define initial state
+const initialState = {
     amount: 4,
     isLoading: true,
     cartItems: [],
     total: 0,
 };
 
-export const getCartItems = createAsyncThunk("name/items", () => {
-    return fetch("https://course-api.com/react-useReducer-cart-project")
-        .then((resp) => resp.json())
-        .catch((error) => console.log(error));
+// Create an async thunk to fetch cart items
+export const getCartItems = createAsyncThunk("name/items", async () => {
+    try {
+        const response = await fetch("https://cors-anywhere.herokuapp.com/https://course-api.com/react-useReducer-cart-project");
+        if (!response.ok) {
+            throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+        console.log(data)
+        return data;
+    } catch (error) {
+        console.error("Error fetching cart items:", error);
+        throw error;
+    }
 });
+
+// Create a slice
 const demoSlice = createSlice({
-    //firstSlice is the object that contains many properties that are useful
     name: "letitgo",
     initialState,
     reducers: {
@@ -38,7 +51,7 @@ const demoSlice = createSlice({
                 }
             });
         },
-        decCounter: (state, { payload }) => {
+        decCounter: (state, {payload}) => {
             //destructuring payload from the object
             let cartItem = state.cartItems.find((obj) => {
                 return obj.id == payload;
@@ -58,19 +71,20 @@ const demoSlice = createSlice({
             state.total = b.toFixed(2);
         },
     },
-    extraReducers: {
-        [getCartItems.pending]: (state) => {
-            state.isLoading = true;
-        },
-        [getCartItems.fulfilled]: (state, action) => {
-            console.log(action.payload);
-            state.cartItems = action.payload;
-            state.isLoading = false;
-        },
-        [getCartItems.rejected]: (state) => {
-            state.isLoading = false;
-        },
+    extraReducers: (builder) => {
+        builder
+            .addCase(getCartItems.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(getCartItems.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.cartItems = action.payload;
+            })
+            .addCase(getCartItems.rejected, (state) => {
+                state.isLoading = false;
+            });
     },
 });
+
 export default demoSlice.reducer;
-export const { actions } = demoSlice; //the actions property of the slice is exported , the action object within it (is in form of function) is used by the useDispatch function for sending the action
+export const {actions} = demoSlice; //the actions property of the slice is exported , the action object within it (is in form of function) is used by the useDispatch function for sending the action

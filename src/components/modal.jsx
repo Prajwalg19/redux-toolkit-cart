@@ -14,11 +14,11 @@ function Modal() {
                             <MdOutlineCancel onClick={() => dispatch(modalActions.closeModal())} className="absolute right-3 top-3 text-xl text-gray-400 " />
                         </button>
                         <div className="p-6 text-center">
-                            <svg className="w-12 h-12 mx-auto mb-4 text-gray-400 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <svg className="w-12 h-12 mx-auto mb-4 text-gray-400 dark:text-gray-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                             </svg>
 
-                            <h3 className="mb-5 text-lg font-normal text-gray-500 font-semibold ">Are you sure you want to clear the cart ?</h3>
+                            <h3 className="mb-5 text-lg  text-gray-500 font-semibold ">Are you sure you want to clear the cart ?</h3>
                             <button
                                 data-modal-hide="popup-modal"
                                 type="button"
@@ -33,7 +33,7 @@ function Modal() {
                             <button
                                 data-modal-hide="popup-modal"
                                 type="button"
-                                className="transition ease-in-out hover:text-white hover:bg-gray-700 text-gray-700 bg-white  focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border-gray-200 text-sm font-semibold px-5 uppercase tracking-widest py-2.5 hover:text-gray-900 focus:z-10 border-2 border-gray-700 "
+                                className="transition ease-in-out hover:text-white hover:bg-gray-700 text-gray-700 bg-white  focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border-gray-200 text-sm font-semibold px-5 uppercase tracking-widest py-2.5 focus:z-10 border-2 "
                                 onClick={() => dispatch(modalActions.closeModal())}
                             >
                                 Cancel
