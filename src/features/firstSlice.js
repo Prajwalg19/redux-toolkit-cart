@@ -11,7 +11,7 @@ const initialState = {
 // Create an async thunk to fetch cart items
 export const getCartItems = createAsyncThunk("name/items", async () => {
     try {
-        const response = await fetch("https://cors-anywhere.herokuapp.com/https://course-api.com/react-useReducer-cart-project");
+        const response = await fetch("https://www.course-api.com/react-useReducer-cart-project");
         if (!response.ok) {
             throw new Error("Failed to fetch data");
         }
